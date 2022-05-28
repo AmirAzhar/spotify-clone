@@ -1,5 +1,5 @@
 import type { NextPage } from 'next'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/sidebar/Sidebar'
 
 const Home: NextPage = () => {
   return (

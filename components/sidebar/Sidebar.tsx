@@ -1,12 +1,3 @@
-import {
-  HomeIcon,
-  SearchIcon,
-  LibraryIcon,
-  PlusCircleIcon,
-  HeartIcon,
-  RssIcon,
-} from '@heroicons/react/outline'
-
 const Sidebar = () => {
   return (
     <div className="text-small border-r border-gray-900 p-5 text-gray-500">
