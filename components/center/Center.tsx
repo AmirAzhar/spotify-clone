@@ -15,9 +15,9 @@ const colors = [
 
 const Center = () => {
   const { data: session } = useSession()
-  const [color, setColor] = useState(null)
+  const [color, setColor] = useState('from-indigo-500')
   useEffect(() => {
-    setColor(shuffle(colors).pop())
+    setColor(shuffle(colors).pop() || 'from-indigo-500')
   }, [])
 
   return (
