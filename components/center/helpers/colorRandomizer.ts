@@ -1,6 +1,6 @@
 import { shuffle } from 'lodash'
 
-const colors = [
+const colors: string[] = [
   'from-indigo-500',
   'from-blue-500',
   'from-green-500',
@@ -10,6 +10,6 @@ const colors = [
   'from-purple-500',
 ]
 
-export default function colorRandomizer() {
+export default function colorRandomizer(): string {
   return shuffle(colors).pop() || 'from-indigo-500'
 }
