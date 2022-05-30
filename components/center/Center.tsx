@@ -1,7 +1,6 @@
 // Library
 import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
-import { shuffle } from 'lodash'
 
 // Component
 import ProfileHeader from './ProfileHeader'

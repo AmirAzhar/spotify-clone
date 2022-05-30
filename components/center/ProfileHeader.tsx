@@ -4,7 +4,7 @@ import { ChevronDownIcon } from '@heroicons/react/outline'
 const ProfileHeader = () => {
   const { data: session } = useSession()
   return (
-    <div className="flex cursor-pointer items-center space-x-3 rounded-full bg-white p-1 pr-2 opacity-90 transition duration-300 hover:opacity-80">
+    <div className="flex cursor-pointer items-center space-x-3 rounded-full bg-gray-200 p-1 pr-2 opacity-90 transition duration-300 hover:opacity-80">
       <img
         className="h-10 w-10 rounded-full"
         src={session?.user?.image || ''}
