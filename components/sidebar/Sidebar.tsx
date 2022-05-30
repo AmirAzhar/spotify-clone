@@ -6,13 +6,14 @@ import useSpotify from '../../hooks/useSpotify'
 const Sidebar = () => {
   const spotifyApi: SpotifyWebApi = useSpotify()
   const { data: session, status } = useSession()
-  const [playlists, setPlaylists] = useState<{ id: string; name: string }[]>([])
+  const [playlists, setPlaylists] = useState<
+    SpotifyApi.PlaylistObjectSimplified[]
+  >([])
 
   useEffect(() => {
     if (spotifyApi.getAccessToken()) {
       spotifyApi.getUserPlaylists().then((data) => {
         setPlaylists(data.body.items)
-        console.log(playlists)
       })
     }
   }, [session, spotifyApi])
