@@ -21,7 +21,7 @@ const Sidebar = () => {
   }, [session, spotifyApi])
 
   return (
-    <div className="text-small h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-500 scrollbar-hide">
+    <div className="text-small h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-400 scrollbar-hide">
       <Navigations />
       <Playlists playlists={playlists} />
     </div>
