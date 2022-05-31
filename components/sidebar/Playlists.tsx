@@ -8,7 +8,7 @@ import { playlistIdState } from '../../atoms/playlistAtom'
 const Playlists: React.FC<PlaylistsProps> = ({ playlists }) => {
   const [playlistId, setPlaylistId] = useRecoilState(playlistIdState)
   return (
-    <div className="overflow-y-scroll scrollbar-hide">
+    <div className="scrollbar-thumb-rounded-full overflow-y-scroll scrollbar scrollbar-thumb-gray-600 hover:scrollbar-thumb-gray-400">
       <div className="space-y-4">
         {playlists.map((playlist) => (
           <p
