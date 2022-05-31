@@ -6,7 +6,7 @@ const Playlists: React.FC<PlaylistsProps> = ({ playlists }) => {
     <div className="">
       <div className="flex items-center justify-between">
         <h1 className="py-5 text-sm text-gray-500">Playlists</h1>
-        <p className="text-3xl">+</p>
+        <button className="text-3xl">+</button>
       </div>
       <div className="space-y-4">
         {playlists.map((playlist) => (

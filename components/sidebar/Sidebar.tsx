@@ -10,6 +10,7 @@ import useSpotify from '../../hooks/useSpotify'
 import Menu from './Menu'
 import Playlists from './Playlists'
 import Search from './Search'
+import Header from './Header'
 
 const Sidebar = () => {
   const spotifyApi: SpotifyWebApi = useSpotify()
@@ -28,6 +29,7 @@ const Sidebar = () => {
 
   return (
     <div className="text-small h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-400 scrollbar-hide">
+      <Header />
       <Search />
       <Menu />
       <Playlists playlists={playlists} />
