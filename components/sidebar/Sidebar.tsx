@@ -28,10 +28,14 @@ const Sidebar = () => {
   }, [session, spotifyApi])
 
   return (
-    <div className="text-small h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-400 scrollbar-hide">
+    <div className="text-small flex h-screen flex-col border-r border-gray-900 p-5 text-gray-400">
       <Header />
       <Search />
       <Menu />
+      <div className="flex items-center justify-between">
+        <h1 className="py-5 text-sm text-gray-500">Playlists</h1>
+        <button className="text-3xl hover:text-white">+</button>
+      </div>
       <Playlists playlists={playlists} />
     </div>
   )
