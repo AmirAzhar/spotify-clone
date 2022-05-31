@@ -1,18 +1,19 @@
 // Library
-import { useSession } from 'next-auth/react'
 import { useState, useEffect } from 'react'
-
-// Component
-import ProfileHeader from './ProfileHeader'
 
 // Helper
 import colorRandomizer from './helpers/colorRandomizer'
 
+// State
+import { useRecoilValue } from 'recoil'
+import { playlistIdState } from '../../atoms/playlistAtom'
+
 const Center = () => {
+  const playlistId = useRecoilValue(playlistIdState)
   const [color, setColor] = useState('from-indigo-500')
   useEffect(() => {
     setColor(colorRandomizer())
-  }, [])
+  }, [playlistId])
 
   return (
     <div className="flex-grow">
