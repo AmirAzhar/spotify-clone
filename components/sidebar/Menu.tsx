@@ -1,10 +1,10 @@
 // Library
 import { signOut } from 'next-auth/react'
 
-const Navigations = () => {
+const Menu = () => {
   return (
     <div>
-      <h1 className="py-5 text-sm text-gray-500">Menu</h1>
+      <h1 className="pb-5 text-sm text-gray-500">Menu</h1>
       <div className="space-y-4">
         <button className="flex items-center space-x-2  transition duration-100 hover:text-white">
           <p className="text-xl">🏠</p>
@@ -25,4 +25,4 @@ const Navigations = () => {
   )
 }
 
-export default Navigations
+export default Menu

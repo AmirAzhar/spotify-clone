@@ -1,9 +1,15 @@
+// Library
 import { useSession } from 'next-auth/react'
 import { useEffect, useState } from 'react'
 import SpotifyWebApi from 'spotify-web-api-node'
+
+// Hook
 import useSpotify from '../../hooks/useSpotify'
-import Navigations from './Navigations'
+
+// Component
+import Menu from './Menu'
 import Playlists from './Playlists'
+import Search from './Search'
 
 const Sidebar = () => {
   const spotifyApi: SpotifyWebApi = useSpotify()
@@ -22,7 +28,8 @@ const Sidebar = () => {
 
   return (
     <div className="text-small h-screen overflow-y-scroll border-r border-gray-900 p-5 text-gray-400 scrollbar-hide">
-      <Navigations />
+      <Search />
+      <Menu />
       <Playlists playlists={playlists} />
     </div>
   )
