@@ -1,5 +1,8 @@
+// Library
+import { getProviders } from 'next-auth/react'
+
 // Type
-import type { NextPage } from 'next'
+import type { GetServerSideProps, NextPage } from 'next'
 
 // Component
 import Center from '../components/center/Center'
@@ -18,3 +21,12 @@ const Home: NextPage = () => {
 }
 
 export default Home
+
+export const getServerSideProps: GetServerSideProps = async () => {
+  const providers = await getProviders()
+  return {
+    props: {
+      providers,
+    },
+  }
+}

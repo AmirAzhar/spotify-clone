@@ -13,6 +13,9 @@ import useSpotify from '../../hooks/useSpotify'
 import { useRecoilState, useRecoilValue } from 'recoil'
 import { playlistIdState, playlistState } from '../../atoms/playlistAtom'
 
+// Component
+import Songs from './Songs'
+
 const Center = () => {
   const playlistId = useRecoilValue(playlistIdState)
   const [color, setColor] = useState('from-indigo-500')
@@ -37,7 +40,20 @@ const Center = () => {
     <div className="flex-grow">
       <section
         className={`flex h-80 items-end space-x-7 bg-gradient-to-b ${color} to-black p-8 text-white`}
-      ></section>
+      >
+        <img
+          className="shadow2xl h-44 w-44"
+          src={playlist?.images[0]?.url}
+          alt=""
+        />
+        <div>
+          <p>PLAYLIST</p>
+          <h1 className="text-2xl font-bold md:text-3xl xl:text-5xl">
+            {playlist?.name}
+          </h1>
+        </div>
+        <Songs />
+      </section>
     </div>
   )
 }
