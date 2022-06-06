@@ -42,7 +42,7 @@ const Center = () => {
         className={`flex h-80 items-end space-x-7 bg-gradient-to-b ${color} to-black p-8 text-white`}
       >
         <img
-          className="shadow2xl h-44 w-44"
+          className="shadow2xl h-44 w-44 rounded-lg"
           src={playlist?.images[0]?.url}
           alt=""
         />

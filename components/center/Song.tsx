@@ -20,10 +20,10 @@ const Song: React.FC<SongProps> = ({ track, order }) => {
         />
         <div>
           <p>{track.track.name}</p>
-          <p>{track.track.artists[0].name}</p>
+          <p className="text-sm text-gray-400">{track.track.artists[0].name}</p>
         </div>
       </div>
-      <div className="ml-auto flex items-center justify-between md:ml-0">
+      <div className="ml-auto flex items-center justify-between text-sm text-gray-400 md:ml-0">
         <p className="hidden md:inline">{track.track.album.name}</p>
         <p>Duration</p>
       </div>
