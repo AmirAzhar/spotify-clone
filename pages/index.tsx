@@ -1,5 +1,5 @@
 // Library
-import { getProviders } from 'next-auth/react'
+import { getSession } from 'next-auth/react'
 
 // Type
 import type { GetServerSideProps, NextPage } from 'next'
@@ -22,11 +22,11 @@ const Home: NextPage = () => {
 
 export default Home
 
-export const getServerSideProps: GetServerSideProps = async () => {
-  const providers = await getProviders()
+export const getServerSideProps: GetServerSideProps = async (context) => {
+  const session = await getSession(context)
   return {
     props: {
-      providers,
+      session,
     },
   }
 }
