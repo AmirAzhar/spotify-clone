@@ -37,7 +37,7 @@ const Center = () => {
   }, [spotifyApi, playlistId])
 
   return (
-    <div className="flex-grow">
+    <div className="h-screen flex-grow overflow-y-scroll scrollbar-hide">
       <section
         className={`flex h-80 items-end space-x-7 bg-gradient-to-b ${color} to-black p-8 text-white`}
       >
@@ -52,8 +52,10 @@ const Center = () => {
             {playlist?.name}
           </h1>
         </div>
-        <Songs />
       </section>
+      <div>
+        <Songs />
+      </div>
     </div>
   )
 }
