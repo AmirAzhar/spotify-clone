@@ -7,6 +7,7 @@ import type { GetServerSideProps, NextPage } from 'next'
 // Component
 import Center from '../components/center/Center'
 import Sidebar from '../components/sidebar/Sidebar'
+import Player from '../components/player/Player'
 
 const Home: NextPage = () => {
   return (
@@ -15,7 +16,9 @@ const Home: NextPage = () => {
         <Sidebar />
         <Center />
       </main>
-      <div>{/* Player */}</div>
+      <div className="sticky bottom-0">
+        <Player />
+      </div>
     </div>
   )
 }
