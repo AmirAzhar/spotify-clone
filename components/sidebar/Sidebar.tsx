@@ -28,7 +28,7 @@ const Sidebar = () => {
   }, [session, spotifyApi])
 
   return (
-    <div className=" hidden h-screen flex-col border-r border-gray-900 p-5 text-xs text-gray-400 sm:max-w-[15rem] md:flex lg:max-w-[17rem] lg:text-sm">
+    <div className=" hidden h-screen flex-col border-r border-gray-900 p-5 pb-36 text-xs text-gray-400 sm:max-w-[15rem] md:flex lg:max-w-[17rem] lg:text-sm">
       <Header />
       <Search />
       <Menu />
