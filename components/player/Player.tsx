@@ -3,6 +3,18 @@ import { useSession } from 'next-auth/react'
 import { useRecoilState } from 'recoil'
 import SpotifyWebApi from 'spotify-web-api-node'
 import { useState, useEffect } from 'react'
+import {
+  ReplyIcon,
+  SwitchHorizontalIcon,
+  VolumeUpIcon as VolumeDownIcon,
+} from '@heroicons/react/outline'
+import {
+  FastForwardIcon,
+  PauseIcon,
+  PlayIcon,
+  RewindIcon,
+  VolumeUpIcon,
+} from '@heroicons/react/solid'
 
 // Hooks
 import useSpotify from '../../hooks/useSpotify'
@@ -31,6 +43,18 @@ const Player = () => {
     }
   }
 
+  const handlePlayPause = () => {
+    spotifyApi.getMyCurrentPlaybackState().then((data: any) => {
+      if (data.body?.is_playing) {
+        spotifyApi.pause()
+        setIsPlaying(false)
+      } else {
+        spotifyApi.play()
+        setIsPlaying(true)
+      }
+    })
+  }
+
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
       fetchCurrentSong()
@@ -52,6 +76,28 @@ const Player = () => {
             {songInfo?.artists?.[0]?.name}
           </p>
         </div>
+      </div>
+      <div className="flex items-center justify-evenly">
+        <SwitchHorizontalIcon className="button" />
+        <RewindIcon className="button" />
+        {isPlaying ? (
+          <PauseIcon onClick={handlePlayPause} className="button h-10 w-10" />
+        ) : (
+          <PlayIcon onClick={handlePlayPause} className="button h-10 w-10" />
+        )}
+        <FastForwardIcon className="button" />
+        <ReplyIcon className="button" />
+      </div>
+      <div className="flex items-center justify-end space-x-3 pr-5 md:space-x-4">
+        <VolumeDownIcon className="button" />
+        <input
+          className="w-14 md:w-28"
+          type="range"
+          value={volume}
+          min={0}
+          max={100}
+        />
+        <VolumeUpIcon className="button" />
       </div>
     </div>
   )
