@@ -24,37 +24,18 @@ import useSongInfo from '../../hooks/useSongInfo'
 // Atoms
 import { currentTrackIdState, isPlayingState } from '../../atoms/songAtom'
 
+// Code
+import { handlePlayPause } from './helpers/handlePlayPause'
+import { fetchCurrentSong } from './helpers/handleFetchCurrentSong'
+
 const Player = () => {
   const spotifyApi: SpotifyWebApi = useSpotify()
   const { data: session, status } = useSession()
   const [currentTrackId, setCurrentTrackId] =
     useRecoilState(currentTrackIdState)
   const [isPlaying, setIsPlaying] = useRecoilState(isPlayingState)
-  const [volume, setVolume] = useState(50)
+  const [volume, setVolume] = useState(100)
   const songInfo: any = useSongInfo()
-
-  const fetchCurrentSong = () => {
-    if (!songInfo) {
-      spotifyApi.getMyCurrentPlayingTrack().then((data: any) => {
-        setCurrentTrackId(data.body?.item?.id)
-        spotifyApi.getMyCurrentPlaybackState().then((data: any) => {
-          setIsPlaying(data.body?.is_playing)
-        })
-      })
-    }
-  }
-
-  const handlePlayPause = () => {
-    spotifyApi.getMyCurrentPlaybackState().then((data: any) => {
-      if (data.body?.is_playing) {
-        spotifyApi.pause()
-        setIsPlaying(false)
-      } else {
-        spotifyApi.play()
-        setIsPlaying(true)
-      }
-    })
-  }
 
   const debouncedAdjustVolume = useCallback(
     debounce((volume) => {
@@ -65,8 +46,8 @@ const Player = () => {
 
   useEffect(() => {
     if (spotifyApi.getAccessToken() && !currentTrackId) {
-      fetchCurrentSong()
-      setVolume(50)
+      fetchCurrentSong(songInfo, spotifyApi, setCurrentTrackId, setIsPlaying)
+      setVolume(100)
     }
   }, [currentTrackId, spotifyApi, session])
 
@@ -95,9 +76,15 @@ const Player = () => {
         <SwitchHorizontalIcon className="button" />
         <RewindIcon className="button" />
         {isPlaying ? (
-          <PauseIcon onClick={handlePlayPause} className="button h-10 w-10" />
+          <PauseIcon
+            onClick={() => handlePlayPause(spotifyApi, setIsPlaying)}
+            className="button h-10 w-10"
+          />
         ) : (
-          <PlayIcon onClick={handlePlayPause} className="button h-10 w-10" />
+          <PlayIcon
+            onClick={() => handlePlayPause(spotifyApi, setIsPlaying)}
+            className="button h-10 w-10"
+          />
         )}
         <FastForwardIcon className="button" />
         <ReplyIcon className="button" />
