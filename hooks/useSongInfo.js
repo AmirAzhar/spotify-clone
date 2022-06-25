@@ -23,6 +23,15 @@ function useSongInfo() {
           }
         ).then((res) => res.json())
         setSongInfo(trackInfo)
+      } else {
+        await fetch(`	https://api.spotify.com/v1/me/player/recently-played`, {
+          headers: { Authorization: `Bearer ${spotifyApi.getAccessToken()}` },
+        })
+          .then((res) => res.json())
+          .then((res) => {
+            const mostRecentlyPlayed = res['items'][0]['track']
+            setSongInfo(mostRecentlyPlayed)
+          })
       }
     }
     fetchSongInfo()
